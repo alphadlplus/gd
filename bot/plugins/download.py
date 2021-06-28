@@ -66,7 +66,7 @@ def _telegram_file(client, message):
   try:
     file_path = message.download(file_name=Config.DOWNLOAD_DIRECTORY)
     sent_message.edit(Messages.DOWNLOADED_SUCCESSFULLY.format(os.path.basename(file_path), humanbytes(os.path.getsize(file_path))))
-    msg = GoogleDrive(user_id).upload_file(file_path, file.mime_type)
+    msg = GoogleDrive(user_id).upload_file(file.file_name, file_path, file.mime_type)
     sent_message.edit(msg)
   except RPCError:
     sent_message.edit(Messages.WENT_WRONG)
