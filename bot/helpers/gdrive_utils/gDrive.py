@@ -137,7 +137,7 @@ class GoogleDrive:
 
   @retry(wait=wait_exponential(multiplier=2, min=3, max=6), stop=stop_after_attempt(5),
     retry=retry_if_exception_type(HttpError), before=before_log(LOGGER, logging.DEBUG))
-  def upload_file(self, file_path, mimeType=None):
+  def upload_file(self, file_name1, file_path, mimeType=None):
       mime_type = mimeType if mimeType else guess_type(file_path)[0]
       mime_type = mime_type if mime_type else "text/plain"
       media_body = MediaFileUpload(
@@ -146,7 +146,7 @@ class GoogleDrive:
           chunksize=150*1024*1024,
           resumable=True
       )
-      filename = os.path.basename(file_path)
+      filename = file_name1
       filesize = humanbytes(os.path.getsize(file_path))
       body = {
           "name": filename,
