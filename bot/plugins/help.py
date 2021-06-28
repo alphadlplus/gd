@@ -16,10 +16,6 @@ def _start(client, message):
                     InlineKeyboardButton("How To Use Me ðŸ¤”", f"help+1")
                 ],
                 [
-                    InlineKeyboardButton("Update Channel", url="https://t.me/HxBots"),
-                    InlineKeyboardButton("Support Group", url="https://t.me/HxSupport")
-                ],
-                [
                    InlineKeyboardButton("By Me A Coffee", url="https://pay2me.vercel.app/kkirodewal@okaxis")
                 ]
             ]
